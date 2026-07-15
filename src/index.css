@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --nc-green-dark: #2f5d44;
+  --nc-green: #4c8063;
+  --nc-green-mid: #6ca07f;
+  --nc-green-light: #8fb996;
+  --nc-green-pale: #e7f0e9;
+  --nc-bg: #f5f7f5;
+  --nc-card: #ffffff;
+  --nc-text: #1c2b22;
+  --nc-text-muted: #5b6b60;
+  --nc-red: #b23b3b;
+  --nc-gold: #c9962c;
+
+  color-scheme: light;
+  color: var(--nc-text);
+  background: var(--nc-bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes flash-up {
+  0% { background-color: rgba(76, 128, 99, 0.35); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flash-down {
+  0% { background-color: rgba(178, 59, 59, 0.35); }
+  100% { background-color: transparent; }
+}
+
+.flash-up {
+  animation: flash-up 1.2s ease-out;
+}
+
+.flash-down {
+  animation: flash-down 1.2s ease-out;
+}
