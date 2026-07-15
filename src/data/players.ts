@@ -45,12 +45,3 @@ export const PLAYERS: PlayerDef[] = [
   { id: "tren-father-son-duo", name: "Tren Father/Son Duo", baseOdds: 200, windowStart: h(14), windowEnd: h(16) },
 ];
 
-export function formatWindow(p: PlayerDef): string {
-  if (p.windowStart == null || p.windowEnd == null) return "Anytime";
-  const fmt = (mins: number) => {
-    const hour24 = Math.floor(mins / 60);
-    const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
-    return `${hour12}`;
-  };
-  return `${fmt(p.windowStart)}-${fmt(p.windowEnd)}pm`;
-}

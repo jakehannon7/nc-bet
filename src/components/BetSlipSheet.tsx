@@ -1,16 +1,7 @@
 import { useState } from "react";
 import { useApp } from "../context/AppContext";
-import { formatAmericanOdds } from "../lib/odds";
+import { americanToDecimal, decimalToAmerican, formatAmericanOdds } from "../lib/odds";
 import { CloseIcon, TrashIcon } from "./icons";
-
-function americanToDecimal(odds: number): number {
-  return odds > 0 ? 1 + odds / 100 : 1 + 100 / -odds;
-}
-
-function decimalToAmerican(decimal: number): number {
-  const profit = decimal - 1;
-  return profit >= 1 ? Math.round(profit * 100) : Math.round(-100 / profit);
-}
 
 export function BetSlipSheet({ onClose }: { onClose: () => void }) {
   const { slip, removeFromSlip, clearSlip, placeBet, bankroll } = useApp();

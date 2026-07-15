@@ -1,10 +1,11 @@
-import { BoardIcon, HomeIcon, TicketIcon, TrophyIcon } from "./icons";
+import { BoardIcon, ClipboardIcon, HomeIcon, TicketIcon, TrophyIcon } from "./icons";
 
-export type Tab = "home" | "board" | "bets" | "account";
+export type Tab = "home" | "board" | "log" | "bets" | "account";
 
 const TABS: { id: Tab; label: string; Icon: typeof HomeIcon }[] = [
   { id: "home", label: "Home", Icon: HomeIcon },
   { id: "board", label: "Board", Icon: BoardIcon },
+  { id: "log", label: "Log", Icon: ClipboardIcon },
   { id: "bets", label: "My Bets", Icon: TicketIcon },
   { id: "account", label: "Progress", Icon: TrophyIcon },
 ];

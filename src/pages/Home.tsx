@@ -12,7 +12,7 @@ export function Home({ liveOdds, onViewBoard }: { liveOdds: LiveOdds[]; onViewBo
   const liveNow = useMemo(() => {
     const mins = nowMinutes();
     return liveOdds
-      .filter(({ player }) => player.windowStart != null && mins >= player.windowStart && mins <= player.windowEnd!)
+      .filter(({ profile }) => profile.median != null && Math.abs(mins - profile.median) <= profile.halfWidth)
       .sort((a, b) => a.odds - b.odds)
       .slice(0, 6);
   }, [liveOdds]);
@@ -41,7 +41,7 @@ export function Home({ liveOdds, onViewBoard }: { liveOdds: LiveOdds[]; onViewBo
             No one's scheduled window is active right now. Check the full board for anytime players.
           </p>
         ) : (
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {liveNow.map((lo) => (
               <PlayerCard key={lo.player.id} {...lo} />
             ))}
@@ -52,7 +52,9 @@ export function Home({ liveOdds, onViewBoard }: { liveOdds: LiveOdds[]; onViewBo
           <h3 className="mb-1 font-semibold text-[var(--nc-text)]">How odds work</h3>
           <p className="text-sm text-[var(--nc-text-muted)]">
             Each regular gets best odds at the middle of their usual window, then odds drift longer the
-            further you are from that time. Lines refresh every few minutes.
+            further you are from that time. Your daily logs move the lines too: show up a few days in a
+            row and the odds shorten around your usual walk-in time; disappear for a week and they blow
+            out. Log who's at the gym from the Log tab, then finalize the day to settle bets.
           </p>
         </div>
       </div>

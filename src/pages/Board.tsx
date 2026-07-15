@@ -48,14 +48,14 @@ export function Board({ liveOdds }: { liveOdds: LiveOdds[] }) {
           ))}
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((lo) => (
             <PlayerCard key={lo.player.id} {...lo} />
           ))}
-          {filtered.length === 0 && (
-            <p className="py-10 text-center text-[var(--nc-text-muted)]">No players match "{query}".</p>
-          )}
         </div>
+        {filtered.length === 0 && (
+          <p className="py-10 text-center text-[var(--nc-text-muted)]">No players match "{query}".</p>
+        )}
       </div>
     </div>
   );
